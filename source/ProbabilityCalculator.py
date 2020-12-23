@@ -1,3 +1,5 @@
+import datetime
+now = datetime.datetime.now()
 class PrCalcBase:
     def __init__(self,b,k,deffect_name):
         self.k_coef = k
@@ -27,12 +29,12 @@ class PrCalcFix(PrCalcBase):
 
 class PrCalcTime(PrCalcBase):
     def FindProb(self,car):
-        res =  self.k_coef * car.year + self.b_coef
+        res =  self.k_coef * (car.year - now.year) + self.b_coef
         return self.CheckRes(res)
 
 class PrCalcUsage(PrCalcBase):
     def FindProb(self,car):
-        res = self.k_coef * car.year + self.b_coef
+        res = self.k_coef * car.car_usage + self.b_coef
         return self.CheckRes(res)
 
 class PrCalcHist(PrCalcBase):
