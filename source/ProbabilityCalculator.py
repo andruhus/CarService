@@ -12,7 +12,7 @@ class PrCalcBase:
     def FindNumDeffects(self,car):
         res = 0
         for deffect in car.history_of_defects:
-            if deffect.name == self.deffect_name:
+            if deffect[2] == self.deffect_name:
                 res += 1
                 pass
         return res
