@@ -39,8 +39,8 @@ class DfCalcFix(DfCalcBase):
 
 class DfCalcTime(DfCalcBase):
     def find_diff(self,car):
-        res_time =  self.k_coef_time * (car.year - now.year) + self.b_coef_time
-        res_cost =  self.k_coef_cost * (car.year - now.year) + self.b_coef_cost
+        res_time =  self.k_coef_time * (now.year - car.year) + self.b_coef_time
+        res_cost =  self.k_coef_cost * (now.year - car.year) + self.b_coef_cost
         return self.CheckRes(res_time,res_cost)
 
 class DfCalcUsage(DfCalcBase):

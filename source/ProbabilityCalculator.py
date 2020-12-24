@@ -29,7 +29,7 @@ class PrCalcFix(PrCalcBase):
 
 class PrCalcTime(PrCalcBase):
     def FindProb(self,car):
-        res =  self.k_coef * (car.year - now.year) + self.b_coef
+        res =  self.k_coef * (now.year - car.year) + self.b_coef
         return self.CheckRes(res)
 
 class PrCalcUsage(PrCalcBase):

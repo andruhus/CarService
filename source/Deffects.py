@@ -1,11 +1,19 @@
-from ProbabilityCalculator import *
-from DiffcultyCalculator import *
+from source.DiffcultyCalculator import *
+from source.ProbabilityCalculator import *
+
+
 class Deffect:
     def __init__(self,name,prob,diff):
         self.name = name
         self.probability = prob
         self.difficulty = diff
         pass
+
+    def __init__(self,line):
+        fields = line.split(':')
+        self.name = fields[0]
+        self.find_probability(fields)
+        self.find_diffculty(fields)
 
     def find_probability(self,fields):
         if fields[1] == "Fixed":
@@ -19,20 +27,15 @@ class Deffect:
 
     def find_diffculty(self,fields):
         if fields[4] == "Fixed":
-            self.probability = DfCalcFix(float(fields[5]), float(fields[6]),
+            self.difficulty = DfCalcFix(float(fields[5]), float(fields[6]),
                                          float(fields[7]),float(fields[8]), fields[0])
         if fields[4] == "Year":
-            self.probability = DfCalcTime(float(fields[5]), float(fields[6]),
+            self.difficulty = DfCalcTime(float(fields[5]), float(fields[6]),
                                           float(fields[7]),float(fields[8]), fields[0])
         if fields[4] == "Car usage":
-            self.probability = DfCalcUsage(float(fields[5]), float(fields[6]),
+            self.difficulty = DfCalcUsage(float(fields[5]), float(fields[6]),
                                            float(fields[7]),float(fields[8]), fields[0])
         if fields[4] == "Manufacturer":
-            self.probability = DfCalcManufacturer(float(fields[5]), float(fields[6]),
+            self.difficulty = DfCalcManufacturer(float(fields[5]), float(fields[6]),
                                                   float(fields[7]),float(fields[8]), fields[0])
 
-    def __init__(self,line):
-        fields = line.split(':')
-        self.name = fields[0]
-        self.find_probability(fields)
-        self.find_diffculty(fields)

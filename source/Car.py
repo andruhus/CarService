@@ -14,9 +14,11 @@ class Car:
         self.year = int(fields[2])
         self.car_usage = int(fields[3])
         self.history_of_defects = []
-        temp = fields[4].split(';')
-        for item in temp:
-            self.history_of_defects.append(item.split())
+        if len(fields) > 4:
+            temp = fields[4].split(';')
+            for item in temp:
+                self.history_of_defects.append(item.split())
+
     def get_string(self):
         str = self.name + ":" + self.manufacturer + ":"
         str += str(self.year) + ":" + str(self.car_usage) + ":"
